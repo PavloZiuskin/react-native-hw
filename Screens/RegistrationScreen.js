@@ -13,6 +13,7 @@ import {
   Keyboard,
   Text,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 const initialState = {
   login: "",
@@ -24,6 +25,23 @@ export const RegistrationForm = () => {
   const [state, setState] = useState(initialState);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [isSecurePassword, setIsSecurePassword] = useState(true);
+  const [dimensions, setDimensions] = useState(
+    Dimensions.get("window").width - 16 * 2
+  );
+  const [dimensionsHeigth, setDimensionsHeigth] = useState(
+    Dimensions.get("window").height
+  );
+  useEffect(() => {
+    const onChange = () => {
+      const width = Dimensions.get("window").width - 16 * 2;
+      const height = Dimensions.get("window").height;
+
+      setDimensions(width);
+      setDimensionsHeigth(height);
+    };
+    const subscription = Dimensions.addEventListener("change", onChange);
+    return () => subscription.remove();
+  });
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -87,8 +105,10 @@ export const RegistrationForm = () => {
             <View
               style={{
                 ...style.registrationContainer,
+                marginTop: dimensions > dimensionsHeigth ? 100 : 0,
                 marginBottom:
                   isShowKeyboard && Platform.OS === "ios" ? -160 : 0,
+                width: dimensions + 16 * 2,
               }}
             >
               <View style={style.avatar}>
@@ -182,6 +202,7 @@ const style = StyleSheet.create({
     backgroundColor: "#FFF",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
+    alignItems: "center",
   },
   avatar: {
     position: "absolute",
@@ -218,7 +239,6 @@ const style = StyleSheet.create({
   modal__input: {
     height: 50,
     paddingLeft: 16,
-    marginHorizontal: 16,
     marginBottom: 16,
     backgroundColor: "#F6F6F6",
     borderWidth: 1,
@@ -226,7 +246,6 @@ const style = StyleSheet.create({
     borderColor: "#E8E8E8",
   },
   btn: {
-    marginHorizontal: 16,
     marginTop: 28,
     marginBottom: 16,
     height: 50,

@@ -13,6 +13,7 @@ import {
   Keyboard,
   Text,
   TouchableOpacity,
+  Dimensions,
 } from "react-native";
 const initialState = {
   email: "",
@@ -22,6 +23,23 @@ export const LoginScreen = () => {
   const [state, setState] = useState(initialState);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [isSecurePassword, setIsSecurePassword] = useState(true);
+  const [dimensions, setDimensions] = useState(
+    Dimensions.get("window").width - 16 * 2
+  );
+  const [dimensionsHeigth, setDimensionsHeigth] = useState(
+    Dimensions.get("window").height
+  );
+  useEffect(() => {
+    const onChange = () => {
+      const width = Dimensions.get("window").width - 16 * 2;
+      const height = Dimensions.get("window").height;
+
+      setDimensions(width);
+      setDimensionsHeigth(height);
+    };
+    const subscription = Dimensions.addEventListener("change", onChange);
+    return () => subscription.remove();
+  });
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -82,63 +100,67 @@ export const LoginScreen = () => {
             <View
               style={{
                 ...style.loginContainer,
+                marginTop: dimensions > dimensionsHeigth ? 100 : 0,
                 marginBottom:
                   isShowKeyboard && Platform.OS === "ios" ? -160 : 0,
+                width: dimensions + 16 * 2,
               }}
             >
-              <Text style={style.loginTitle}>Sing in</Text>
-              <View style={style.formContainer}>
-                <TextInput
-                  style={style.modal__input}
-                  placeholder="Email"
-                  value={state.email}
-                  onChangeText={(value) => {
-                    setState((prevState) => ({ ...prevState, email: value }));
-                  }}
-                  onFocus={() => {
-                    console.log(state);
-                    setIsShowKeyboard(true);
-                  }}
-                />
-                <View style={{ position: "relative" }}>
+              <View style={{ width: dimensions }}>
+                <Text style={style.loginTitle}>Sing in</Text>
+                <View style={style.formContainer}>
                   <TextInput
                     style={style.modal__input}
-                    secureTextEntry={isSecurePassword}
-                    placeholder="Password"
-                    value={state.password}
+                    placeholder="Email"
+                    value={state.email}
                     onChangeText={(value) => {
-                      setState((prevState) => ({
-                        ...prevState,
-                        password: value,
-                      }));
+                      setState((prevState) => ({ ...prevState, email: value }));
                     }}
                     onFocus={() => {
+                      console.log(state);
                       setIsShowKeyboard(true);
                     }}
                   />
-                  <TouchableOpacity
-                    activeOpacity={0.8}
-                    style={style.passwordShowBtn}
-                    onPress={passwordShown}
-                  >
-                    <Text style={style.registerLinkTitle}>
-                      {showPasswordBtn}
-                    </Text>
-                  </TouchableOpacity>
+                  <View style={{ position: "relative" }}>
+                    <TextInput
+                      style={style.modal__input}
+                      secureTextEntry={isSecurePassword}
+                      placeholder="Password"
+                      value={state.password}
+                      onChangeText={(value) => {
+                        setState((prevState) => ({
+                          ...prevState,
+                          password: value,
+                        }));
+                      }}
+                      onFocus={() => {
+                        setIsShowKeyboard(true);
+                      }}
+                    />
+                    <TouchableOpacity
+                      activeOpacity={0.8}
+                      style={style.passwordShowBtn}
+                      onPress={passwordShown}
+                    >
+                      <Text style={style.registerLinkTitle}>
+                        {showPasswordBtn}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
+                <TouchableOpacity
+                  style={style.btn}
+                  activeOpacity={0.8}
+                  onPress={handleSubmitForm}
+                >
+                  <Text style={style.btnText}>SING UP</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={style.btnLink} activeOpacity={0.5}>
+                  <Text style={style.btnLinkText}>
+                    Haven't your account? Sing up
+                  </Text>
+                </TouchableOpacity>
               </View>
-              <TouchableOpacity
-                style={style.btn}
-                activeOpacity={0.8}
-                onPress={handleSubmitForm}
-              >
-                <Text style={style.btnText}>SING UP</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={style.btnLink} activeOpacity={0.5}>
-                <Text style={style.btnLinkText}>
-                  Haven't your account? Sing up
-                </Text>
-              </TouchableOpacity>
             </View>
           </KeyboardAvoidingView>
         </ImageBackground>
@@ -155,12 +177,14 @@ const style = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "flex-end",
+    alignItems: "center",
   },
   loginContainer: {
     position: "relative",
     backgroundColor: "#FFF",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
+    alignItems: "center",
   },
   loginTitle: {
     marginTop: 32,
@@ -175,7 +199,6 @@ const style = StyleSheet.create({
   modal__input: {
     height: 50,
     paddingLeft: 16,
-    marginHorizontal: 16,
     marginBottom: 16,
     backgroundColor: "#F6F6F6",
     borderWidth: 1,
@@ -183,7 +206,6 @@ const style = StyleSheet.create({
     borderColor: "#E8E8E8",
   },
   btn: {
-    marginHorizontal: 16,
     marginTop: 28,
     marginBottom: 16,
     height: 50,
