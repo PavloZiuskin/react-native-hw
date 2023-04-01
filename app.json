@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-hw",
-    "slug": "react-native-hw",
+    "name": "myNewProject",
+    "slug": "myNewProject",
     "version": "1.0.0",
     "orientation": "default",
     "icon": "./assets/icon.png",
