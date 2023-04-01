@@ -111,75 +111,79 @@ export const RegistrationForm = () => {
                 width: dimensions + 16 * 2,
               }}
             >
-              <View style={style.avatar}>
-                <Image />
-                <TouchableOpacity style={style.btnAdd} activeOpacity={0.8}>
-                  <Image source={require("../assets/Union.png")} />
-                </TouchableOpacity>
-              </View>
+              <View style={{ width: dimensions }}>
+                <View style={style.avatar}>
+                  <Image />
+                  <TouchableOpacity style={style.btnAdd} activeOpacity={0.8}>
+                    <Image source={require("../assets/Union.png")} />
+                  </TouchableOpacity>
+                </View>
 
-              <Text style={style.registrationTitle}>Registration</Text>
-              <View style={style.formContainer}>
-                <TextInput
-                  style={style.modal__input}
-                  placeholder="Login"
-                  value={state.login}
-                  onChangeText={(value) => {
-                    setState((prevState) => ({ ...prevState, login: value }));
-                  }}
-                  onFocus={() => {
-                    setIsShowKeyboard(true);
-                  }}
-                />
-                <TextInput
-                  style={style.modal__input}
-                  placeholder="Email"
-                  value={state.email}
-                  onChangeText={(value) => {
-                    setState((prevState) => ({ ...prevState, email: value }));
-                  }}
-                  onFocus={() => {
-                    console.log(state);
-                    setIsShowKeyboard(true);
-                  }}
-                />
-                <View style={{ position: "relative" }}>
+                <Text style={style.registrationTitle}>Registration</Text>
+                <View style={style.formContainer}>
                   <TextInput
                     style={style.modal__input}
-                    secureTextEntry={isSecurePassword}
-                    placeholder="Password"
-                    value={state.password}
+                    placeholder="Login"
+                    value={state.login}
                     onChangeText={(value) => {
-                      setState((prevState) => ({
-                        ...prevState,
-                        password: value,
-                      }));
+                      setState((prevState) => ({ ...prevState, login: value }));
                     }}
                     onFocus={() => {
                       setIsShowKeyboard(true);
                     }}
                   />
-                  <TouchableOpacity
-                    activeOpacity={0.8}
-                    style={style.passwordShowBtn}
-                    onPress={passwordShown}
-                  >
-                    <Text style={style.registerLinkTitle}>
-                      {showPasswordBtn}
-                    </Text>
-                  </TouchableOpacity>
+                  <TextInput
+                    style={style.modal__input}
+                    placeholder="Email"
+                    value={state.email}
+                    onChangeText={(value) => {
+                      setState((prevState) => ({ ...prevState, email: value }));
+                    }}
+                    onFocus={() => {
+                      console.log(state);
+                      setIsShowKeyboard(true);
+                    }}
+                  />
+                  <View style={{ position: "relative" }}>
+                    <TextInput
+                      style={style.modal__input}
+                      secureTextEntry={isSecurePassword}
+                      placeholder="Password"
+                      value={state.password}
+                      onChangeText={(value) => {
+                        setState((prevState) => ({
+                          ...prevState,
+                          password: value,
+                        }));
+                      }}
+                      onFocus={() => {
+                        setIsShowKeyboard(true);
+                      }}
+                    />
+                    <TouchableOpacity
+                      activeOpacity={0.8}
+                      style={style.passwordShowBtn}
+                      onPress={passwordShown}
+                    >
+                      <Text style={style.registerLinkTitle}>
+                        {showPasswordBtn}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
+                <TouchableOpacity
+                  style={style.btn}
+                  activeOpacity={0.8}
+                  onPress={handleSubmitForm}
+                >
+                  <Text style={style.btnText}>SING UP</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={style.btnLink} activeOpacity={0.5}>
+                  <Text style={style.btnLinkText}>
+                    Have you account? Sing in
+                  </Text>
+                </TouchableOpacity>
               </View>
-              <TouchableOpacity
-                style={style.btn}
-                activeOpacity={0.8}
-                onPress={handleSubmitForm}
-              >
-                <Text style={style.btnText}>SING UP</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={style.btnLink} activeOpacity={0.5}>
-                <Text style={style.btnLinkText}>Have you account? Sing in</Text>
-              </TouchableOpacity>
             </View>
           </KeyboardAvoidingView>
         </ImageBackground>
