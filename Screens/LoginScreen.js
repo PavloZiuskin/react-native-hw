@@ -27,13 +27,13 @@ export const LoginScreen = () => {
     const keyboardDidShowListener = Keyboard.addListener(
       "keyboardDidShow",
       () => {
-        setIsShowKeyboard(true); // or some other action
+        setIsShowKeyboard(true);
       }
     );
     const keyboardDidHideListener = Keyboard.addListener(
       "keyboardDidHide",
       () => {
-        setIsShowKeyboard(false); // or some other action
+        setIsShowKeyboard(false);
       }
     );
 
