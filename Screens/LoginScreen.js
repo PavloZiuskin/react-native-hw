@@ -91,7 +91,7 @@ export const LoginScreen = () => {
     <TouchableWithoutFeedback onPress={keyboardHide}>
       <View style={style.container} onLayout={onLayoutRootView}>
         <ImageBackground
-          source={require("../assets/PhotoBG.jpg")}
+          source={require("../assets/photoBG.jpg")}
           style={style.imageBackground}
         >
           <KeyboardAvoidingView

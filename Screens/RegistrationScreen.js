@@ -96,7 +96,7 @@ export const RegistrationForm = () => {
     <TouchableWithoutFeedback onPress={keyboardHide}>
       <View style={style.container} onLayout={onLayoutRootView}>
         <ImageBackground
-          source={require("../assets/PhotoBG.jpg")}
+          source={require("../assets/photoBG.jpg")}
           style={style.imageBackground}
         >
           <KeyboardAvoidingView
@@ -115,7 +115,7 @@ export const RegistrationForm = () => {
                 <View style={style.avatar}>
                   <Image />
                   <TouchableOpacity style={style.btnAdd} activeOpacity={0.8}>
-                    <Image source={require("../assets/Union.png")} />
+                    <Image source={require("../assets/union.png")} />
                   </TouchableOpacity>
                 </View>
 
