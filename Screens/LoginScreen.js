@@ -3,7 +3,6 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import {
   ImageBackground,
-  Image,
   View,
   StyleSheet,
   TextInput,
@@ -19,7 +18,7 @@ const initialState = {
   email: "",
   password: "",
 };
-export const LoginScreen = () => {
+export const LoginScreen = ({navigation}) => {
   const [state, setState] = useState(initialState);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [isSecurePassword, setIsSecurePassword] = useState(true);
@@ -67,6 +66,7 @@ export const LoginScreen = () => {
   function handleSubmitForm() {
     setIsSecurePassword(true);
     setState(initialState);
+    
   }
   const passwordShown = () => {
     isSecurePassword === true
@@ -74,6 +74,7 @@ export const LoginScreen = () => {
       : setIsSecurePassword(true);
   };
   const showPasswordBtn = isSecurePassword ? "To show" : "To hide";
+  SplashScreen.preventAutoHideAsync();
   const [fontsLoaded] = useFonts({
     "Roboto-Regular": require("../assets/fonts/Roboto-Regular.ttf"),
     "Roboto-Medium": require("../assets/fonts/Roboto-Medium.ttf"),
@@ -89,7 +90,7 @@ export const LoginScreen = () => {
   }
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
-      <View style={style.container} onLayout={onLayoutRootView}>
+      <View style={{...style.container}} onLayout={onLayoutRootView}>
         <ImageBackground
           source={require("../assets/photoBG.jpg")}
           style={style.imageBackground}
@@ -117,7 +118,6 @@ export const LoginScreen = () => {
                       setState((prevState) => ({ ...prevState, email: value }));
                     }}
                     onFocus={() => {
-                      console.log(state);
                       setIsShowKeyboard(true);
                     }}
                   />
@@ -155,7 +155,7 @@ export const LoginScreen = () => {
                 >
                   <Text style={style.btnText}>SING UP</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={style.btnLink} activeOpacity={0.5}>
+                <TouchableOpacity style={style.btnLink} activeOpacity={0.5} onPress={()=>{navigation.navigate("Registration")}}>
                   <Text style={style.btnLinkText}>
                     Haven't your account? Sing up
                   </Text>

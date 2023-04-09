@@ -21,7 +21,7 @@ const initialState = {
   password: "",
 };
 
-export const RegistrationForm = () => {
+export const RegistrationForm = ({navigation}) => {
   const [state, setState] = useState(initialState);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [isSecurePassword, setIsSecurePassword] = useState(true);
@@ -70,6 +70,7 @@ export const RegistrationForm = () => {
   function handleSubmitForm() {
     setIsSecurePassword(true);
     setState(initialState);
+    
   }
   const showPasswordBtn = isSecurePassword ? "To show" : "To hide";
   const passwordShown = () => {
@@ -77,6 +78,7 @@ export const RegistrationForm = () => {
       ? setIsSecurePassword(false)
       : setIsSecurePassword(true);
   };
+  SplashScreen.preventAutoHideAsync();
   const [fontsLoaded] = useFonts({
     "Roboto-Regular": require("../assets/fonts/Roboto-Regular.ttf"),
     "Roboto-Medium": require("../assets/fonts/Roboto-Medium.ttf"),
@@ -178,7 +180,7 @@ export const RegistrationForm = () => {
                 >
                   <Text style={style.btnText}>SING UP</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={style.btnLink} activeOpacity={0.5}>
+                <TouchableOpacity style={style.btnLink} activeOpacity={0.5} onPress={()=>{navigation.navigate("Login")}}>
                   <Text style={style.btnLinkText}>
                     Have you account? Sing in
                   </Text>
