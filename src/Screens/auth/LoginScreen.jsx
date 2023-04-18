@@ -11,7 +11,8 @@ import {
   ImageBackground,
   KeyboardAvoidingView,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { AntDesign } from '@expo/vector-icons'; 
+import { FontAwesome } from '@expo/vector-icons';
 import { pallete } from "../../helpers/variables";
 
 const image = require("../../images/bg-img.png");
@@ -116,7 +117,7 @@ export function LoginScreen({ navigation }) {
                   style={styles.btnShowPassword}
                   onPress={toggleShowPassword}
                 >
-                  <Icon name="eye" size={20} />
+                  <AntDesign name="eye" size={20} />
                 </TouchableOpacity>
               ) : (
                 <TouchableOpacity
@@ -124,7 +125,7 @@ export function LoginScreen({ navigation }) {
                   style={styles.btnShowPassword}
                   onPress={toggleShowPassword}
                 >
-                  <Icon name="eye-slash" size={20} />
+                  <FontAwesome name="eye-slash" size={20} />
                 </TouchableOpacity>
               )}
             </View>

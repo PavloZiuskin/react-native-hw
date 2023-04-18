@@ -8,7 +8,7 @@ import {
   ImageBackground,
   ScrollView,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { AntDesign } from '@expo/vector-icons';
 import { pallete } from "../../helpers/variables";
 import { PostItem } from "../../components/PostItem";
 import { testDB } from "../../helpers/testDB";
@@ -69,7 +69,7 @@ export function ProfileScreen({ navigation }) {
                     }}
                     onPress={toggleShowAvatar}
                   >
-                    <Icon name="times" size={15} color={pallete.gray} />
+                    <AntDesign name="times" size={15} color={pallete.gray} />
                   </TouchableOpacity>
                 </>
               )}

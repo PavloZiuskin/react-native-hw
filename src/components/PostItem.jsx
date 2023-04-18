@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { FontAwesome } from '@expo/vector-icons';
 import { pallete } from "../helpers/variables";
 
 // ! Main CODE
@@ -14,18 +14,18 @@ export function PostItem({ postData }) {
       <View style={styles.postInfo}>
         <View style={styles.postValuesWrapper}>
           <View style={styles.postValues}>
-            <Icon name="comment" size={18} color={pallete.accent} />
+            <FontAwesome name="comment" size={18} color={pallete.accent} />
             <Text style={styles.postValuesText}>{commentsNumber}</Text>
           </View>
 
           <View style={{ ...styles.postValues, marginLeft: 24 }}>
-            <Icon name="thumbs-o-up" size={18} color={pallete.accent} />
+            <FontAwesome name="thumbs-o-up" size={18} color={pallete.accent} />
             <Text style={styles.postValuesText}>{likes}</Text>
           </View>
         </View>
 
         <View style={styles.postValues}>
-          <Icon name="map-marker" size={20} color={pallete.gray} />
+          <FontAwesome name="map-marker" size={20} color={pallete.gray} />
           <Text
             style={{
               ...styles.postValuesText,

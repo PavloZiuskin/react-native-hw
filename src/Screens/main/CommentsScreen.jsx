@@ -12,7 +12,7 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { AntDesign } from '@expo/vector-icons';
 import { UserComment } from "../../components/UserComment";
 import { OwnComment } from "../../components/OwnComment";
 import { pallete } from "../../helpers/variables";
@@ -53,7 +53,7 @@ export function CommentsScreen({ route }) {
               style={styles.btnSendComment}
               onPress={onSendComment}
             >
-              <Icon name="arrow-up" size={15} color={pallete.white} />
+              <AntDesign name="plus" size={15} color={pallete.white} />
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>

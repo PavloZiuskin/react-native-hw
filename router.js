@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Icon from "./assets/fonts/FontAwesome.ttf";
+import { FontAwesome } from '@expo/vector-icons';
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { RegistrationScreen, LoginScreen } from "./src/Screens/auth";
 import { CommentsScreen, Home, MapScreen } from "./src/Screens/main";
@@ -8,7 +8,6 @@ import { pallete } from "./src/helpers/variables";
 const AuthStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
 // const Tab = createMaterialBottomTabNavigator();
-
 export const useRoutes = (isAuth) => {
   if (!isAuth) {
     return (
@@ -62,7 +61,7 @@ function LogOut() {
       }}
       onPress={() => alert("Log out from your acount NEW")}
     >
-      <Icon name="sign-out" size={24} color={pallete.gray} />
+      <FontAwesome name="sign-out" size={24} color={pallete.gray} />
     </TouchableOpacity>
   );
 }

@@ -1,5 +1,5 @@
 import { TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { FontAwesome } from '@expo/vector-icons';
 import { pallete } from "../helpers/variables";
 
 export function CustomGoBack({ goBack }) {
@@ -11,7 +11,7 @@ export function CustomGoBack({ goBack }) {
       }}
       onPress={() => goBack()}
     >
-      <Icon name="long-arrow-left" size={24} color={pallete.softBlack} />
+      <FontAwesome name="long-arrow-left" size={24} color={pallete.softBlack} />
     </TouchableOpacity>
   );
 }

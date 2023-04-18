@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { ProfileScreen } from "./ProfileScreen";
 import { PostsScreen } from "./PostsScreen";
 import { Dimensions, StyleSheet } from "react-native";
@@ -33,8 +34,8 @@ export const Home = ({ navigation: { goBack } }) => {
           headerRight: () => <LogOut styles={{ marginRight: 20 }} />,
           headerTitleAlign: "center",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
-              name="view-grid-outline"
+            <AntDesign
+              name="appstore-o"
               color={color}
               size={24}
             />
@@ -49,7 +50,7 @@ export const Home = ({ navigation: { goBack } }) => {
           headerTitle: "Create publication",
           headerLeft: () => <CustomGoBack goBack={goBack} />,
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons
+            <AntDesign
               name="plus"
               color={pallete.white}
               size={24}

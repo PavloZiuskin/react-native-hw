@@ -1,5 +1,5 @@
 import { TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { FontAwesome } from '@expo/vector-icons';
 import { pallete } from "../helpers/variables";
 
 export function LogOut({ styles }) {
@@ -9,7 +9,7 @@ export function LogOut({ styles }) {
       style={styles}
       onPress={() => alert("Log out from your acount NEW")}
     >
-      <Icon name="sign-out" size={24} color={pallete.gray} />
+      <FontAwesome name="sign-out" size={24} color={pallete.gray} />
     </TouchableOpacity>
   );
 }

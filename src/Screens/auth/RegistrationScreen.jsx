@@ -12,7 +12,8 @@ import {
   KeyboardAvoidingView,
   ImageBackground,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { AntDesign } from '@expo/vector-icons'; 
+import { FontAwesome } from '@expo/vector-icons';
 import { pallete } from "../../helpers/variables";
 import { useNavigation } from "@react-navigation/native";
 
@@ -113,7 +114,7 @@ export function RegistrationScreen({
                   }}
                   onPress={toggleShowAvatar}
                 >
-                  <Icon name="plus" size={15} color={pallete.accent} />
+                  <AntDesign name="plus" size={15} color={pallete.accent} />
                 </TouchableOpacity>
               ) : (
                 <>
@@ -130,7 +131,7 @@ export function RegistrationScreen({
                     }}
                     onPress={toggleShowAvatar}
                   >
-                    <Icon name="times" size={15} color={pallete.gray} />
+                    <FontAwesome name="times" size={15} color={pallete.gray} />
                   </TouchableOpacity>
                 </>
               )}
@@ -194,7 +195,7 @@ export function RegistrationScreen({
                   style={styles.btnShowPassword}
                   onPress={toggleShowPassword}
                 >
-                  <Icon name="eye" size={20} />
+                  <AntDesign name="eye" size={20} />
                 </TouchableOpacity>
               ) : (
                 <TouchableOpacity
@@ -202,7 +203,7 @@ export function RegistrationScreen({
                   style={styles.btnShowPassword}
                   onPress={toggleShowPassword}
                 >
-                  <Icon name="eye-slash" size={20} />
+                  <FontAwesome name="eye-slash" size={20} />
                 </TouchableOpacity>
               )}
             </View>

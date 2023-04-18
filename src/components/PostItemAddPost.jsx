@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { FontAwesome } from '@expo/vector-icons';
 import { pallete } from "../helpers/variables";
 
 // ! Main CODE
@@ -31,7 +31,7 @@ export function PostItemAddPost({ postData, navigation }) {
             })
           }
         >
-          <Icon name="comment" size={18} color={pallete.gray} />
+          <FontAwesome name="comment" size={18} color={pallete.gray} />
           <Text style={styles.postValuesText}>10</Text>
         </TouchableOpacity>
 
@@ -46,7 +46,7 @@ export function PostItemAddPost({ postData, navigation }) {
             })
           }
         >
-          <Icon name="map-marker" size={18} color={pallete.gray} />
+          <FontAwesome name="map-marker" size={18} color={pallete.gray} />
           <Text style={styles.postValuesText}>{locationName}</Text>
         </TouchableOpacity>
       </View>
