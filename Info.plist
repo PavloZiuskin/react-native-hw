@@ -1,2 +1,7 @@
-MaterialIcons.ttf
-FontAwesome5_Regular.ttf
+{
+	UIAppFonts = (
+		"FontAwesome.ttf",
+		"MaterialCommunityIcons.ttf",
+	);
+	CFBundleIdentifier = "";
+}

@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "./assets/fonts/FontAwesome.ttf";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { RegistrationScreen, LoginScreen } from "./src/Screens/auth";
 import { CommentsScreen, Home, MapScreen } from "./src/Screens/main";
